@@ -1,0 +1,172 @@
+// =========================================================
+// Feuille de style principale (Sass)
+// 1. On redéfinit les variables de Bootstrap avec la charte de la région
+// 2. On importe Bootstrap
+// 3. On ajoute nos styles (approche mobile first : styles de base pour mobile,
+//    puis media queries pour les écrans plus grands)
+// =========================================================
+
+// ---- Charte graphique ----
+$bleu-clair: #f1f8fc;
+$bleu: #0074c7;
+$bleu-fonce: #00497c;
+$gris-fonce: #384050;
+$rouge: #cd2c2e; // accentuation uniquement
+$vert: #82b864;  // accentuation uniquement
+
+// ---- Variables Bootstrap ----
+$primary: $bleu;
+$body-bg: $bleu-clair;
+$body-color: $gris-fonce;
+$link-color: $bleu-fonce;
+$font-family-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+$headings-color: $gris-fonce;
+
+@import 'bootstrap/scss/bootstrap';
+
+// ---- Lien d'évitement ----
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: $bleu-fonce;
+  color: #fff;
+}
+
+// ---- Focus bien visible pour la navigation au clavier ----
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid $bleu-fonce;
+  outline-offset: 2px;
+}
+
+// ---- Header ----
+.site-logo {
+  width: 170px;
+  height: auto;
+}
+
+.header-menu {
+  display: none;
+  width: 100%;
+
+  &.is-open {
+    display: block;
+  }
+
+  .nav-link {
+    color: $gris-fonce;
+    font-weight: 600;
+
+    &:hover,
+    &.active {
+      color: $bleu;
+      text-decoration: underline;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .site-logo {
+    width: 213px;
+  }
+
+  .header-menu {
+    display: flex;
+    width: auto;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+// ---- Bandeau d'accueil ----
+.hero {
+  background: $bleu-fonce;
+  color: #fff;
+
+  h1 {
+    color: #fff;
+    font-size: 1.75rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+// ---- Étapes ----
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background: $bleu;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+// ---- Fiches artisans ----
+.artisan-card {
+  border: 0;
+  border-top: 4px solid $bleu;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover,
+  &:focus-within {
+    transform: translateY(-3px);
+    box-shadow: $box-shadow;
+  }
+
+  .card-title a {
+    color: $bleu-fonce;
+    text-decoration: none;
+  }
+}
+
+// ---- Étoiles ----
+.star {
+  font-size: 1.2rem;
+}
+
+.star-full {
+  color: $bleu;
+}
+
+.star-half {
+  // demi-étoile : moitié bleue, moitié grise
+  background: linear-gradient(90deg, $bleu 50%, #c5ccd6 50%);
+  background-clip: text;
+  color: transparent;
+}
+
+.star-empty {
+  color: #c5ccd6;
+}
+
+// ---- Page 404 ----
+.not-found-img {
+  max-width: 320px;
+}
+
+// ---- Footer ----
+.site-footer {
+  background: $gris-fonce;
+
+  a {
+    color: #fff;
+  }
+
+  h2 {
+    color: #fff;
+  }
+}
